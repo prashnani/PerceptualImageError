@@ -1,4 +1,4 @@
 # Perceptual Image Error Metric
-This is the repository for the [**"PieAPP"** metric](https://arxiv.org/abs/1806.02067) which measures the perceptual error between two images. 
+This is the repository for PieAPP, a metric that measures the perceptual error between two images. Check out our [CVPR 2018 paper](https://arxiv.org/abs/1806.02067) for more details.
 
-The associated source code, links to the trained models, etc. would be posted to this repository.
+The source code, trained models, and the dataset will be available soon.
