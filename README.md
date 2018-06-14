@@ -1,5 +1,5 @@
 # Perceptual Image Error Metric (PieAPP v0.1)
-This is the repository for the [**"PieAPP"** metric](http://cvc.ucsb.edu/graphics/Papers/CVPR2018_PieAPP/) which measures the perceptual error between two images. 
+This is the repository for the [**"PieAPP"** metric](http://cvc.ucsb.edu/graphics/Papers/CVPR2018_PieAPP/) which measures the perceptual error of a distorted image with respect to a reference. 
 
 Technical details about the metric can be found in our paper "**[PieAPP: Perceptual Image-Error Assessment through Pairwise Preference](https://prashnani.github.io/index_files/Prashnani_CVPR_2018_PieAPP_paper.pdf)**", published at CVPR 2018, and also on the [project webpage](http://cvc.ucsb.edu/graphics/Papers/CVPR2018_PieAPP/). The directions to use the metric can be found in this repository.
 
