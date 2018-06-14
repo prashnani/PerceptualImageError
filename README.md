@@ -74,3 +74,5 @@ For example:
     year = {2018}
     }
 
+## Acknowledgements
+This project was supported in part by NSF grants IIS-1321168 and IIS-1619376, as well as a Fall 2017 AI Grant (awarded to Ekta Prashnani).
