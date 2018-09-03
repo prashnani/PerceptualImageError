@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import numpy as np
 import cv2
 import sys
@@ -10,9 +12,14 @@ from utils.image_utils import *
 import argparse
 import os
 
+
 ######## check for model and download if not present
 if not os.path.isfile('weights/PieAPPv0.1.pth'):
-    assert False, "Download weights first"
+    print("downloading dataset")
+    os.system("bash scripts/download_PieAPPv0.1_PT_weights.sh")
+    if not os.path.isfile('weights/PieAPPv0.1.pth'):
+        print("PieAPPv0.1.pth not downloaded")
+        sys.exit()
 
 ######## variables
 patch_size = 64
