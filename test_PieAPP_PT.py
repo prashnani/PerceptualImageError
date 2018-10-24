@@ -24,10 +24,10 @@ batch_size = 1
 
 ######## input args
 parser = argparse.ArgumentParser()
-parser.add_argument("--ref_path", dest='ref_path', type=str, default='imgs/teaserRef.png', help="specify input reference")
-parser.add_argument("--A_path", dest='A_path', type=str, default='imgs/teaserA.png', help="specify input image")
+parser.add_argument("--ref_path", dest='ref_path', type=str, default='imgs/ref.png', help="specify input reference")
+parser.add_argument("--A_path", dest='A_path', type=str, default='imgs/A.png', help="specify input image")
 parser.add_argument("--sampling_mode", dest='sampling_mode', type=str, default='sparse', help="specify sparse or dense sampling of patches to compte PieAPP")
-parser.add_argument("--gpu_id", dest='gpu_id', type=str, default='', help="specify whihc GPU to use (leave blank if using CPU only)")
+parser.add_argument("--gpu_id", dest='gpu_id', type=str, default='0', help="specify which GPU to use", required=True)
 
 args = parser.parse_args()
 

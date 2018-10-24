@@ -1,5 +1,6 @@
 import numpy as np
 import sys
+import cv2
 
 def generate_images_from_list(A_names, B_names, ref_names, gt_labels, num_imgs_to_get, cursor, max_images):
 

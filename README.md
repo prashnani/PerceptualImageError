@@ -11,7 +11,7 @@ In this repo, we provide the Tensorflow and PyTorch implementations of our evalu
 The dataset and training code would be made available in the near future. Please be sure to check back if you are interested.
 
 ### Dependencies
-The code uses Python 2, numpy, opencv and [PyTorch](https://pytorch.org/) (files ending with _PT_) or [Tensorflow](https://www.tensorflow.org/versions/r1.4/) (files ending with _TF_).
+The code uses Python 2.7, numpy, opencv and PyTorch 0.3.1 (tested with cuda 9.0; wheel can be found [here](https://pytorch.org/get-started/previous-versions/)) (files ending with _PT_) or [Tensorflow](https://www.tensorflow.org/versions/r1.4/) (files ending with _TF_).
 
 ### Expected input and ouput
 The input to PieAPPv0.1 are two images: a reference image, R, and a distorted image, A and the output is the PieAPP value of A with respect to R. PieAPPv0.1 outputs a number that quantifies the perceptual error of A with respect to R. 
@@ -32,7 +32,7 @@ Download trained model:
 
 Run the demo script:
     
-    python test_PieAPP_TF.py --ref_path <path to reference image> --A_path <path to distorted image> --sampling_mode <dense or sparse> --gpu_id <which GPU to use - leave blank if no GPU available>
+    python test_PieAPP_TF.py --ref_path <path to reference image> --A_path <path to distorted image> --sampling_mode <dense or sparse> --gpu_id <specify which GPU to use - don't specify this argument if using CPU only>
                 
 For example:
 	
@@ -49,7 +49,7 @@ Download trained model:
 
 Run the demo script:
     
-    python test_PieAPP_PT.py --ref_path <path to reference image> --A_path <path to distorted image> --sampling_mode <dense or sparse> --gpu_id <which GPU to use - leave blank if no GPU available>
+    python test_PieAPP_PT.py --ref_path <path to reference image> --A_path <path to distorted image> --sampling_mode <dense or sparse> --gpu_id <specify which GPU to use>
 
 For example:
 	

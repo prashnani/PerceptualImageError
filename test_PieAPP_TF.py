@@ -22,10 +22,10 @@ batch_size = 1
 
 ######## input args
 parser = argparse.ArgumentParser()
-parser.add_argument("--ref_path", dest='ref_path', type=str, default='imgs/teaserRef.png', help="specify input reference")
-parser.add_argument("--A_path", dest='A_path', type=str, default='imgs/teaserA.png', help="specify input image")
+parser.add_argument("--ref_path", dest='ref_path', type=str, default='imgs/ref.png', help="specify input reference")
+parser.add_argument("--A_path", dest='A_path', type=str, default='imgs/A.png', help="specify input image")
 parser.add_argument("--sampling_mode", dest='sampling_mode', type=str, default='sparse', help="specify sparse or dense sampling of patches to compte PieAPP")
-parser.add_argument("--gpu_id", dest='gpu_id', type=str, default=None, help="specify whihc GPU to use (leave blank if using CPU only)")
+parser.add_argument("--gpu_id", dest='gpu_id', type=str, default='', help="specify which GPU to use (don't specify this argument if using CPU only)")
 
 args = parser.parse_args()
 
@@ -44,14 +44,14 @@ x_loc = np.concatenate((np.arange(0, rows - patch_size, stride_val),np.array([co
 num_x = len(x_loc)
 num_patches = 10
 
+######## TF placeholder for graph input
+image_A_batch = tf.placeholder(tf.float32)
+image_ref_batch = tf.placeholder(tf.float32) #, [None, rows, cols, ch]
+
 ######## initialize the model
 PieAPP_net = PieAPP(batch_size, args.sampling_mode)
 PieAPP_value, patchwise_errors, patchwise_weights = PieAPP_net.forward(image_A_batch, image_ref_batch)
 saverPieAPP = tf.train.Saver()
-
-######## TF placeholder for graph input
-image_A_batch = tf.placeholder(tf.float32)
-image_ref_batch = tf.placeholder(tf.float32) #, [None, rows, cols, ch]
 
 ######## compute PieAPP
 with tf.Session() as sess: 
@@ -73,12 +73,12 @@ with tf.Session() as sess:
 				size_slice_rows = cols - y_loc[num_patches*y_iter]
 			else:
 				size_slice_rows = y_loc[num_patches*(y_iter + 1)] - y_loc[num_patches*y_iter] + patch_size - stride_val						
-			im_A = imagesA[:, y_loc[num_patches*y_iter]:y_loc[num_patches*y_iter]+size_slice_rows, x_loc[num_patches*x_iter]:x_loc[num_patches*x_iter]+size_slice_cols,:],
+			im_A = imagesA[:, y_loc[num_patches*y_iter]:y_loc[num_patches*y_iter]+size_slice_rows, x_loc[num_patches*x_iter]:x_loc[num_patches*x_iter]+size_slice_cols,:]
 			im_Ref = imagesRef[:, y_loc[num_patches*y_iter]:y_loc[num_patches*y_iter]+size_slice_rows, x_loc[num_patches*x_iter]:x_loc[num_patches*x_iter]+size_slice_cols,:]
 			# forward pass 
 			PieAPP_value_fetched, PieAPP_patchwise_errors, PieAPP_patchwise_weights = sess.run([PieAPP_value, patchwise_errors, patchwise_weights], 
 				feed_dict={
-				image_A_batch: im_A
+				image_A_batch: im_A,
 				image_ref_batch: im_Ref
 				})
 			score_accum += np.sum(np.multiply(PieAPP_patchwise_errors,PieAPP_patchwise_weights),axis=1)

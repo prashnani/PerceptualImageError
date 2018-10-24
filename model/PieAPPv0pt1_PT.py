@@ -1,11 +1,9 @@
 import numpy as np
-import skimage.io as io
 import time
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
-import skimage.io as io
 
 class PieAPP(nn.Module): # How to ensure that everything goes on a GPU? do I need to fetch?
 	def __init__(self,batch_size,num_patches):
