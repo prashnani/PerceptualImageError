@@ -36,7 +36,7 @@ Run the demo script:
                 
 For example:
 	
-	python test_PieAPP_TF.py --ref_path imgs/ref.png --A_path imgs/A.png --sampling_mode sparse --gpu_id 
+	python test_PieAPP_TF.py --ref_path imgs/ref.png --A_path imgs/A.png --sampling_mode sparse --gpu_id 0
 	
 
 
@@ -53,7 +53,7 @@ Run the demo script:
 
 For example:
 	
-	python test_PieAPP_PT.py --ref_path imgs/ref.png --A_path imgs/A.png --sampling_mode sparse --gpu_id 
+	python test_PieAPP_PT.py --ref_path imgs/ref.png --A_path imgs/A.png --sampling_mode sparse --gpu_id 0
 	
 
 ### PieAPPv0.1 Win64 command-line executable:
