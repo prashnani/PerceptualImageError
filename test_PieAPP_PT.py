@@ -52,7 +52,7 @@ except TypeError:
 
 y_loc = np.concatenate((np.arange(0, rows - patch_size, stride_val),np.array([rows - patch_size])), axis=0)
 num_y = len(y_loc)
-x_loc = np.concatenate((np.arange(0, rows - patch_size, stride_val),np.array([cols - patch_size])), axis=0)
+x_loc = np.concatenate((np.arange(0, cols - patch_size, stride_val),np.array([cols - patch_size])), axis=0)
 num_x = len(x_loc)
 num_patches_per_dim = 10
 
@@ -67,15 +67,15 @@ score_accum = 0.0
 weight_accum = 0.0
 
 # iterate through smaller size sub-images (to prevent memory overload)
-for x_iter in range(0,num_x/num_patches_per_dim+1):	
-	for y_iter in range(0,num_y/num_patches_per_dim+1):
+for x_iter in range(0, -(-num_x//num_patches)):	
+	for y_iter in range(0, -(-num_y//num_patches)):
 		# compute the size of the subimage
-		if (num_patches_per_dim*(x_iter + 1) > num_x):				
+		if (num_patches_per_dim*(x_iter + 1) >= num_x):				
 			size_slice_cols = cols - x_loc[num_patches_per_dim*x_iter]
 		else:
 			size_slice_cols = x_loc[num_patches_per_dim*(x_iter + 1)] - x_loc[num_patches_per_dim*x_iter] + patch_size - stride_val			
-		if (num_patches_per_dim*(y_iter + 1) > num_y):
-			size_slice_rows = cols - y_loc[num_patches_per_dim*y_iter]
+		if (num_patches_per_dim*(y_iter + 1) >= num_y):
+			size_slice_rows = rows - y_loc[num_patches_per_dim*y_iter]
 		else:
 			size_slice_rows = y_loc[num_patches_per_dim*(y_iter + 1)] - y_loc[num_patches_per_dim*y_iter] + patch_size - stride_val
 		# obtain the subimage and samples patches
