@@ -40,7 +40,7 @@ if args.sampling_mode == 'dense':
 	stride_val = 6
 y_loc = np.concatenate((np.arange(0, rows - patch_size, stride_val),np.array([rows - patch_size])), axis=0)
 num_y = len(y_loc)
-x_loc = np.concatenate((np.arange(0, rows - patch_size, stride_val),np.array([cols - patch_size])), axis=0)
+x_loc = np.concatenate((np.arange(0, cols - patch_size, stride_val),np.array([cols - patch_size])), axis=0)
 num_x = len(x_loc)
 num_patches = 10
 
@@ -61,16 +61,16 @@ with tf.Session() as sess:
 	# iterate through smaller size sub-images (to prevent memory overload)
 	score_accum = 0.0
 	weight_accum = 0.0
-	for x_iter in range(0,num_x/num_patches+1):
-		for y_iter in range(0,num_y/num_patches+1):
+	for x_iter in range(0, -(-num_x//num_patches)):
+		for y_iter in range(0, -(-num_y//num_patches)):
 			# compute scores on subimage to avoid memory issues
 			# NOTE if image is 512x512 or smaller, PieAPP_value_fetched below gives the overall PieAPP value
-			if (num_patches*(x_iter + 1) > num_x):				
+			if (num_patches*(x_iter + 1) >= num_x):				
 				size_slice_cols = cols - x_loc[num_patches*x_iter]
 			else:
 				size_slice_cols = x_loc[num_patches*(x_iter + 1)] - x_loc[num_patches*x_iter] + patch_size - stride_val			
-			if (num_patches*(y_iter + 1) > num_y):
-				size_slice_rows = cols - y_loc[num_patches*y_iter]
+			if (num_patches*(y_iter + 1) >= num_y):
+				size_slice_rows = rows - y_loc[num_patches*y_iter]
 			else:
 				size_slice_rows = y_loc[num_patches*(y_iter + 1)] - y_loc[num_patches*y_iter] + patch_size - stride_val						
 			im_A = imagesA[:, y_loc[num_patches*y_iter]:y_loc[num_patches*y_iter]+size_slice_rows, x_loc[num_patches*x_iter]:x_loc[num_patches*x_iter]+size_slice_cols,:]
