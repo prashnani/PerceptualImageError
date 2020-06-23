@@ -17,8 +17,8 @@ The code uses Python 2.7, numpy, opencv and PyTorch 0.3.1 (tested with cuda 9.0;
 The input to PieAPPv0.1 are two images: a reference image, R, and a distorted image, A and the output is the PieAPP value of A with respect to R. PieAPPv0.1 outputs a number that quantifies the perceptual error of A with respect to R. 
 
 Since PieAPPv0.1 is computed based on a weighted combination of the patchwise errors, the number of patches extracted affects the speed and accuracy of the computed error. We have two modes of operation: 
-- "Dense" sampling: Selects 64x64 patches with a stride of 6 pixels for PieAPP computation 
-- "Sparse" sampling (default): Selects 64x64 patches with a stride of 27 pixels for PieAPP computation (recommended for speed)
+- "Dense" sampling: Selects 64x64 patches with a stride of 6 pixels for PieAPP computation (recommended for performance evaluation of PieAPP, for e.g., when comparing to other image error evaluation methods)
+- "Sparse" sampling (default): Selects 64x64 patches with a stride of 27 pixels for PieAPP computation (recommended for high-speed processing, for example when used in a pipeline that requires fast execution time)
 
 For large images, to avoid holding all sampled patches in memory, we recommend fetching patchwise errors and weights for sub-images followed by a weighted averaging of the patchwise errors to get the overall image error (see demo scripts [`test_PieAPP_TF.py`](test_PieAPP_TF.py) and [`test_PieAPP_PT.py`](test_PieAPP_PT.py)).
  
