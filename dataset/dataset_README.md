@@ -1,7 +1,7 @@
 
 # PieAPP dataset 
 The dataset associated with the paper PieAPP: Perceptual Image Error Assessment through Pairwise Preference [[arXiv link](https://arxiv.org/abs/1806.02067)] can be downloaded from:
-- [server containing a zip file with all data](http://civc.ucsb.edu/graphics/Papers/CVPR2018_PieAPP/all_data_PieAPP_dataset_CVPR_2018.zip) (2.2GB),
+- [server containing a zip file with all data](https://web.ece.ucsb.edu/~ekta/projects/PieAPPv0.1/all_data_PieAPP_dataset_CVPR_2018.zip) (2.2GB),
 - [Google Drive](https://drive.google.com/drive/folders/10RmBhfZFHESCXhhWq0b3BkO5z8ryw85p?usp=sharing) (ideal for quick browsing). Additionally, `all_data_PieAPP_dataset_CVPR_2018.zip` in Google Drive contains the entire folder zipped (2.2GB) for one-click download.
 
 We make this dataset available for non-commercial and educational purposes only. 
