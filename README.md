@@ -8,8 +8,6 @@ Technical details about the metric can be found in our paper "**[PieAPP: Percept
 ## Using PieAPP
 In this repo, we provide the Tensorflow and PyTorch implementations of our evaluation code for PieAPP v0.1 along with the trained models. We also provide a Win64 command-line executable. 
 
-The dataset and training code would be made available in the near future. Please be sure to check back if you are interested.
-
 ### Dependencies
 The code uses Python 2.7, numpy, opencv and PyTorch 0.3.1 (tested with cuda 9.0; wheel can be found [here](https://pytorch.org/get-started/previous-versions/)) (files ending with _PT_) or [Tensorflow](https://www.tensorflow.org/versions/r1.4/) 1.4 (files ending with _TF_).
 
@@ -64,6 +62,9 @@ We also provide a Win64 command-line executable for PieAPPv0.1. To use it, [down
 For example:
 	
 	PieAPPv0.1 --ref_path imgs/ref.png --A_path imgs/A.png --sampling_mode sparse
+
+## The PieAPP dataset:
+The dataset subdirectory contains information about the PieAPP dataset, terms of usage, and links to downloading the dataset.
 
 ## Citing PieAPPv0.1
     @InProceedings{Prashnani_2018_CVPR,
