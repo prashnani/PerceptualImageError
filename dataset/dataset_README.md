@@ -19,7 +19,7 @@ Overall, the PieAPP dataset provides a total of 20,280 distorted images derived 
 
 More details of dataset collection can be found in Sec.4 of the paper and supplementary document.
 
-## Folder organization:
+## Folder organization
 
 - **reference_images** contains the undistorted referene images derived from the Waterloo Exploration dataset. 
 
@@ -27,7 +27,7 @@ More details of dataset collection can be found in Sec.4 of the paper and supple
 
 - **labels** contains csv files containing pairwise preference labels for distorted images (see main paper and supplementary material for details on how data is captured). There is one (two in case of test set) csv file for each reference image, in train / val / test subfolders.
 
-## Interpreting the csv files contained in the labels folder:
+## Interpreting the csv files contained in the labels folder
 
 - For train and validation (val) set: there is one csv file for to each reference image (`ref_<image number>_pairwise_labels.csv`) containing pairwise labels:
         
@@ -56,7 +56,7 @@ The per-image score indicates the **level of dissimilarity** of a given distorte
 
 Note that for the pairwise comparisons on test images, the reference image is also considered a "distorted" image and pairwise preference between a distorted image and its reference image is also computed. Since the ML-estimated scores using the Bradley-Terry model are correct up to an additive constant, this strategy allows for computing an MAP-estimated score for the reference image as well and serves as the constant which is then subtracted from the scores estimated for all the distorted versions of that reference image. As a result, the final reference-image score gets set to 0.
 
-## Naming convention for images:
+## Naming convention for images
 
 Reference image: `ref_<image number>.png`
 
@@ -69,7 +69,7 @@ The name of any distorted image contains the following parts:
 3. whether this distorted image is used during inter or intra type comparison (paper section 4.1) 
 4. a unique identifier for a given distortion type: several realizations of any given distortion type are generated to choose from (for both inter-type and intra-type comparisons), this identifier helps distinguish those realizations
 
-## Terms of Usage and how to cite this dataset:
+## Terms of Usage and how to cite this dataset
 This dataset is made available only for non-commercial, educational purposes. The TERMS_OF_USE.pdf in the dataset directory highlights the details of the terms of usage.
 
 If you find this dataset useful, please cite the PieAPP dataset:
@@ -99,6 +99,6 @@ Also, for the undistorted reference images, please cite the Waterloo Exploration
 
 For comments on improving this dataset release or questions or for reporting errors, please contact Ekta Prashnani or raise an issue on GitHub.
 
-## Acknowledgements:
+## Acknowledgements
 This project was supported in part by NSF grants IIS-1321168 and IIS-1619376, as well as a Fall 2017 AI Grant (awarded to Ekta Prashnani).
 
