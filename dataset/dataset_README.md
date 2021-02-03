@@ -96,7 +96,7 @@ Also, for the undistorted reference images, please cite the Waterloo Exploration
         year      = {2017}}
 
 
-For comments on improving this dataset release or questions or for reporting errors, please contact Ekta Prashnani or raise an issue on Github.
+For comments on improving this dataset release or questions or for reporting errors, please contact Ekta Prashnani or raise an issue on GitHub.
 
 ## Acknowledgements:
 This project was supported in part by NSF grants IIS-1321168 and IIS-1619376, as well as a Fall 2017 AI Grant (awarded to Ekta Prashnani).
