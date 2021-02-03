@@ -32,29 +32,29 @@ More details of dataset collection can be found in Sec.4 of the paper and supple
 - For train and validation (val) set: there is one csv file for to each reference image (`ref_<image number>_pairwise_labels.csv`) containing pairwise labels:
         
         column 1: reference image
-        column 2: distored image A
-        column 3: distored image B
+        column 2: distorted image A
+        column 3: distorted image B
         column 4: raw probability of preference for image A, as obtained by MTurk data - not all pairs for a given reference are labeled; the ones that are not labeled are left blank in this column
-        column 5: processed probability of preference for image A - we use the MTurk-labeled pairs to do an MAP estimation of all pairs in a given inter set of distorted images for a reference (see section 4.3 in supplementary document for details)
+        column 5: processed probability of preference for image A - we use the MTurk-labeled pairs to do an ML estimation of probability of preference for all pairs in a given inter set of distorted images for a reference (see section 4.3 in supplementary document for details)
 
 - For the test set, each reference image has two csv files: one containing preference labels obtained through exhaustive per-reference pairwise comparisons using Amazon Mechanical Turk (naming convention: `ref_<image number>_pairwise_labels.csv`) 
 and other containing per-image MAP-estimated scores for all distorted images (`ref_<image number>_per_image_score.csv`). 
 
         for ref_<image number>_pairwise_labels.csv in labels/test/ folder:
         column 1: reference image
-        column 2: distored image A
-        column 3: distored image B
-        column 4: probability of preference for image A, as obtained by MTurk data - all pairs are labeled using human data, therefore no additional processnig to esimtate missing pairs is needed
+        column 2: distorted image A
+        column 3: distorted image B
+        column 4: probability of preference for image A, as obtained by MTurk data - all pairs are labeled using human data, therefore no additional processing done to estimate missing pairs is needed
 
         for ref_<image number>_per_image_score.csv in labels/test/ folder:
         column 1: reference image
-        column 2: distored image A
+        column 2: distorted image A
         column 3: score for image A
 
 Computing per-image scores enables evaluating the performance of image error/quality metrics using Pearson's Linear Correlation Coefficient and Spearman rank correlation coefficient. 
 The per-image score indicates the **level of dissimilarity** of a given distorted image as compared to the reference image. That is, an image considered very different from the reference by humans would get a higher score.
 
-Note that for the pairwise comparisons on test images, the reference image is also considered a "distorted" image and pairwise preference between a distorted image and its reference image is also computed. Since the ML-estimated scores using the Bradley-Terry model are correct up to an additive constant, this strategy allows for computing an MAP-estimated score for the reference image as well and serves as the constant which is then subtrated from the scores estimated for all the distorted versions of that reference image. As a result, the final reference-image score gets set to 0.
+Note that for the pairwise comparisons on test images, the reference image is also considered a "distorted" image and pairwise preference between a distorted image and its reference image is also computed. Since the ML-estimated scores using the Bradley-Terry model are correct up to an additive constant, this strategy allows for computing an MAP-estimated score for the reference image as well and serves as the constant which is then subtracted from the scores estimated for all the distorted versions of that reference image. As a result, the final reference-image score gets set to 0.
 
 ## Naming convention for images:
 
