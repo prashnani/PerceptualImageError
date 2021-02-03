@@ -64,7 +64,7 @@ Distorted image: `distort_<image number>_<distortion type>_<inter or intra>_<ide
 
 For each reference image, several distorted versions are generated.
 The name of any distorted image contains the following parts:
-1. an image number that indicates its corresponding reference,
+1. an image number that indicates its corresponding reference
 2. the name of the distortion type
 3. whether this distorted image is used during inter or intra type comparison (paper section 4.1) 
 4. a unique identifier for a given distortion type: several realizations of any given distortion type are generated to choose from (for both inter-type and intra-type comparisons), this identifier helps distinguish those realizations
