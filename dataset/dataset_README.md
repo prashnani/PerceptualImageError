@@ -93,7 +93,8 @@ Also, for the undistorted reference images, please cite the Waterloo Exploration
         number    = {2},
         pages     = {1004--1016},
         month     = {Feb.},
-        year      = {2017}}
+        year      = {2017}
+        }
 
 
 For comments on improving this dataset release or questions or for reporting errors, please contact Ekta Prashnani or raise an issue on GitHub.
