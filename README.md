@@ -63,7 +63,7 @@ For example:
 	
 	PieAPPv0.1 --ref_path imgs/ref.png --A_path imgs/A.png --sampling_mode sparse
 
-## The PieAPP dataset:
+## The PieAPP dataset
 The dataset subdirectory contains information about the PieAPP dataset, terms of usage, and links to downloading the dataset.
 
 ## Citing PieAPPv0.1
