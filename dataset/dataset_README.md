@@ -15,6 +15,7 @@ The training + validation set contain a total of 160 reference images and test s
 A total of 19,680 distorted images are generated for the train/val set and pairwise probability of preference labels for 77,280 image pairs are made available (derived from querying 40 human subjects for every pairwise comparison + ML estimation).
 
 For test set, 15 distorted images per reference (total 600 distorted images) are created and dense pariwise comparisons (total 4200) are performed to label each image pair with a probability of preference, again derived from 40 human subjects' votes.
+
 Overall, the PieAPP dataset provides a total of 20,280 distorted images derived from 200 reference images, and 81,480 pairwise probability-of-preference labels.
 
 More details of dataset collection can be found in Sec.4 of the paper and supplementary document.
