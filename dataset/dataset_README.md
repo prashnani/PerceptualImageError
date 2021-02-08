@@ -54,7 +54,7 @@ and other containing per-image MAP-estimated scores for all distorted images (`r
 Computing per-image scores enables evaluating the performance of image error/quality metrics using Pearson's Linear Correlation Coefficient and Spearman rank correlation coefficient. 
 The per-image score indicates the **level of dissimilarity** of a given distorted image as compared to the reference image. That is, an image considered very different from the reference by humans would get a higher score.
 
-Note that for the pairwise comparisons on test images, the reference image is also considered a "distorted" image and pairwise preference between a distorted image and its reference image is also computed. Since the ML-estimated scores using the Bradley-Terry model are correct up to an additive constant, this strategy allows for computing an MAP-estimated score for the reference image as well and serves as the constant which is then subtracted from the scores estimated for all the distorted versions of that reference image. As a result, the final reference-image score gets set to 0.
+Note that for the pairwise comparisons on test images, the reference image is also considered a "distorted" image and human pairwise preference between a distorted image and its reference image is also collected (again with 40 subjects). Since the ML-estimated scores using the Bradley-Terry model are correct up to an additive constant, this strategy allows for computing an MAP-estimated score for the reference image as well and serves as the constant which is then subtracted from the scores estimated for all the distorted versions of that reference image. As a result, the final reference-image score gets set to 0.
 
 ## Naming convention for images
 
