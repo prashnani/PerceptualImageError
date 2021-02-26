@@ -4,6 +4,8 @@ The dataset associated with the paper PieAPP: Perceptual Image Error Assessment 
 - [server containing a zip file with all data](https://web.ece.ucsb.edu/~ekta/projects/PieAPPv0.1/all_data_PieAPP_dataset_CVPR_2018.zip) (2.2GB),
 - [Google Drive](https://drive.google.com/drive/folders/10RmBhfZFHESCXhhWq0b3BkO5z8ryw85p?usp=sharing) (ideal for quick browsing). 
 
+The dataset contains undistorted high-quality reference images and several distorted versions of these reference images. Pairs of distorted images corresponding to a reference image are labeled with probability of preference labels. These labels that indicate the fraction of human population that considers one image to be visually closer to the reference over another in the pair. To ensure reliable pairwise probability of preference labels, we query 40 human subjects via Amazon Mechanical Turk for each image pair. Furthermore, we find the strategy of pairwise-preference labeling to be more robust to errors compared to traditional image-quality-labeling scheme based on mean opinion scores (MOS) - details about this and additional statistical analysis around reliable data collection can be found in the main paper and supplementary material. 
+
 We make this dataset available for non-commercial and educational purposes only. 
 The dataset contains a total of 200 undistorted reference images, divided into train / validation / test split.
 These reference images are derived from the [Waterloo Exploration Dataset](https://ece.uwaterloo.ca/~k29ma/exploration/). We release the subset of 200 reference images used in PieAPP from the Waterloo Exploration Dataset with permissions for non-commercial, educational, use from the authors.
