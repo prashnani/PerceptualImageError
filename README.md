@@ -7,6 +7,7 @@ Technical details about the metric can be found in our paper "**[PieAPP: Percept
 
 ## Using PieAPP
 In this repo, we provide the Tensorflow and PyTorch implementations of our evaluation code for PieAPP v0.1 along with the trained models. We also provide a Win64 command-line executable. 
+UPDATE: The default patch sampling is changed to "dense" in the demo scripts demo scripts [`test_PieAPP_TF.py`](test_PieAPP_TF.py) and [`test_PieAPP_PT.py`](test_PieAPP_PT.py), (aee "Expected input and output" for details). This is the recommended setting for evaluating PieAPP for its accuracy as compared to other image error evaluation methods.
 
 ### Dependencies
 The code uses Python 2.7, numpy, opencv and PyTorch 0.3.1 (tested with cuda 9.0; wheel can be found [here](https://pytorch.org/get-started/previous-versions/)) (files ending with _PT_) or [Tensorflow](https://www.tensorflow.org/versions/r1.4/) 1.4 (files ending with _TF_).
@@ -15,8 +16,8 @@ The code uses Python 2.7, numpy, opencv and PyTorch 0.3.1 (tested with cuda 9.0;
 The input to PieAPPv0.1 are two images: a reference image, R, and a distorted image, A and the output is the PieAPP value of A with respect to R. PieAPPv0.1 outputs a number that quantifies the perceptual error of A with respect to R. 
 
 Since PieAPPv0.1 is computed based on a weighted combination of the patchwise errors, the number of patches extracted affects the speed and accuracy of the computed error. We have two modes of operation: 
-- "Dense" sampling: Selects 64x64 patches with a stride of 6 pixels for PieAPP computation (recommended for performance evaluation of PieAPP, for e.g., when comparing to other image error evaluation methods)
-- "Sparse" sampling (default): Selects 64x64 patches with a stride of 27 pixels for PieAPP computation (recommended for high-speed processing, for example when used in a pipeline that requires fast execution time)
+- "Dense" sampling (default) : Selects 64x64 patches with a stride of 6 pixels for PieAPP computation; this mode is recommended for performance evaluation of PieAPP for its accuracy as compared to other image error evaluation methods.
+- "Sparse" sampling: Selects 64x64 patches with a stride of 27 pixels for PieAPP computation (recommended for high-speed processing, for example when used in a pipeline that requires fast execution time)
 
 For large images, to avoid holding all sampled patches in memory, we recommend fetching patchwise errors and weights for sub-images followed by a weighted averaging of the patchwise errors to get the overall image error (see demo scripts [`test_PieAPP_TF.py`](test_PieAPP_TF.py) and [`test_PieAPP_PT.py`](test_PieAPP_PT.py)).
  
