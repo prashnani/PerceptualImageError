@@ -14,7 +14,7 @@ This is the recommended setting for evaluating PieAPP for its accuracy as compar
 ### Dependencies
 The code uses Python 2.7, numpy, opencv and PyTorch 0.3.1 (tested with cuda 9.0; wheel can be found [here](https://pytorch.org/get-started/previous-versions/)) (files ending with _PT_) or [Tensorflow](https://www.tensorflow.org/versions/r1.4/) 1.4 (files ending with _TF_).
 
-### Expected input and ouput
+### Expected input and output
 The input to PieAPPv0.1 are two images: a reference image, R, and a distorted image, A and the output is the PieAPP value of A with respect to R. PieAPPv0.1 outputs a number that quantifies the perceptual error of A with respect to R. 
 
 Since PieAPPv0.1 is computed based on a weighted combination of the patchwise errors, the number of patches extracted affects the speed and accuracy of the computed error. We have two modes of operation: 
