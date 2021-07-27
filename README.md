@@ -8,7 +8,8 @@ Technical details about the metric can be found in our paper "**[PieAPP: Percept
 ## Using PieAPP
 In this repo, we provide the Tensorflow and PyTorch implementations of our evaluation code for PieAPP v0.1 along with the trained models. We also provide a Win64 command-line executable. 
 
-UPDATE: The default patch sampling is changed to "dense" in the demo scripts [`test_PieAPP_TF.py`](test_PieAPP_TF.py) and [`test_PieAPP_PT.py`](test_PieAPP_PT.py), (aee "Expected input and output" for details). This is the recommended setting for evaluating PieAPP for its accuracy as compared to other image error evaluation methods.
+UPDATE: The default patch sampling is changed to "dense" in the demo scripts [`test_PieAPP_TF.py`](test_PieAPP_TF.py) and [`test_PieAPP_PT.py`](test_PieAPP_PT.py), (see "Expected input and output" for details). 
+This is the recommended setting for evaluating PieAPP for its accuracy as compared to other image error evaluation methods since the release of PieAPP.
 
 ### Dependencies
 The code uses Python 2.7, numpy, opencv and PyTorch 0.3.1 (tested with cuda 9.0; wheel can be found [here](https://pytorch.org/get-started/previous-versions/)) (files ending with _PT_) or [Tensorflow](https://www.tensorflow.org/versions/r1.4/) 1.4 (files ending with _TF_).
