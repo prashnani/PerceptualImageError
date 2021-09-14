@@ -13,9 +13,9 @@ The users of the PieAPP dataset are requested to cite the Waterloo Exploration D
 
 ## Dataset statistics
 The training + validation set contain a total of 160 reference images and test set contains 40 reference images.
-A total of 19,680 distorted images are generated for the train/val set and pairwise probability of preference labels for 77,280 image pairs are made available (derived from querying 40 human subjects for every pairwise comparison + ML estimation).
+A total of 19,680 distorted images are generated for the train/val set and pairwise probability of preference labels for 77,280 image pairs are made available (derived from querying 40 human subjects for a pairwise comparison + max-likelihood estimation of some missing pairs; see below on how to locate ML-estimated labels in the released data).
 
-For test set, 15 distorted images per reference (total 600 distorted images) are created and dense pariwise comparisons (total 4200) are performed to label each image pair with a probability of preference, again derived from 40 human subjects' votes.
+For test set, 15 distorted images per reference (total 600 distorted images) are created and **all possible** pairwise comparisons (total 4200) are performed to label **each** image pair with a probability of preference derived from 40 human subjects' votes.
 
 Overall, the PieAPP dataset provides a total of 20,280 distorted images derived from 200 reference images, and 81,480 pairwise probability-of-preference labels.
 
