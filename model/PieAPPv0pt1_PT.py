@@ -33,7 +33,7 @@ class PieAPP(nn.Module): # How to ensure that everything goes on a GPU? do I nee
 		self.num_patches = num_patches	
 
 	def flatten(self,matrix): # takes NxCxHxW input and outputs NxHWC
-		return matrix.view((self.batch_size*self.num_patches,-1))
+		return matrix.reshape(int(self.batch_size*self.num_patches),-1)
 	
 	def compute_features(self,input):
 		#conv1 -> relu -> conv2 -> relu -> pool2 -> conv3 -> relu
@@ -57,12 +57,12 @@ class PieAPP(nn.Module): # How to ensure that everything goes on a GPU? do I nee
 		diff_coarse = ref_coarse - A_coarse		
 		# per patch score: fc1_score -> relu -> fc2_score
 		per_patch_score = self.ref_score_subtract(0.01*self.fc2_score(F.relu(self.fc1_score(diff_ms))))
-		per_patch_score.view((-1,self.num_patches))
+		per_patch_score.reshape(-1,int(self.num_patches))
 		# per patch weight: fc1_weight -> relu -> fc2_weight
 		const = Variable(torch.from_numpy(0.000001*np.ones((1,))).float(), requires_grad=False) 
 		const_cuda = const.cuda()		
 		per_patch_weight = self.fc2_weight(F.relu(self.fc1_weight(diff_coarse)))+const_cuda
-		per_patch_weight.view((-1,self.num_patches))
+		per_patch_weight.reshape(-1,int(self.num_patches))
 		product_val = torch.mul(per_patch_weight,per_patch_score)
 		dot_product_val = torch.sum(product_val)
 		norm_factor = torch.sum(per_patch_weight)
