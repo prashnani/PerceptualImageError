@@ -12,10 +12,10 @@ import os
 
 ######## check for model and download if not present
 if not os.path.isfile('weights/PieAPPv0.1.pth'):
-	print "downloading dataset"
+	print("downloading dataset")
 	os.system("bash scripts/download_PieAPPv0.1_PT_weights.sh")
 	if not os.path.isfile('weights/PieAPPv0.1.pth'):
-		print "PieAPPv0.1.pth not downloaded"
+		print("PieAPPv0.1.pth not downloaded")
 		sys.exit()
 
 ######## variables
@@ -58,7 +58,10 @@ num_patches_per_dim = 10
 
 ######## initialize the model
 PieAPP_net = PieAPP(batch_size,num_patches_per_dim)
-PieAPP_net.load_state_dict(torch.load('weights/PieAPPv0.1.pth'))
+weights = torch.load('weights/PieAPPv0.1.pth')
+# modify ref_score_subtract.weight so instead of have torch.Size([1]) it has torch.Size([1, 1])
+weights['ref_score_subtract.weight'] = weights['ref_score_subtract.weight'].unsqueeze(0)
+PieAPP_net.load_state_dict(weights)
 
 if use_gpu == 1:
 	PieAPP_net.cuda()
@@ -67,8 +70,8 @@ score_accum = 0.0
 weight_accum = 0.0
 
 # iterate through smaller size sub-images (to prevent memory overload)
-for x_iter in range(0, -(-num_x//num_patches)):	
-	for y_iter in range(0, -(-num_y//num_patches)):
+for x_iter in range(0, -(-num_x//num_patches_per_dim)):	
+	for y_iter in range(0, -(-num_y//num_patches_per_dim)):
 		# compute the size of the subimage
 		if (num_patches_per_dim*(x_iter + 1) >= num_x):				
 			size_slice_cols = cols - x_loc[num_patches_per_dim*x_iter]
@@ -100,4 +103,4 @@ for x_iter in range(0, -(-num_x//num_patches)):
 		score_accum += np.sum(np.multiply(curr_err, curr_weights))
 		weight_accum += np.sum(curr_weights)
 
-print 'PieAPP value of '+args.A_path+ ' with respect to: '+str(score_accum/weight_accum)
+print('PieAPP value of '+args.A_path+ ' with respect to: '+str(score_accum/weight_accum))
